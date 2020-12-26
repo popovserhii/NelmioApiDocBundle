@@ -22,7 +22,7 @@
     <services>
         <service id="nelmio_api_doc.doc_comment_extractor" class="%nelmio_api_doc.doc_comment_extractor.class%" />
 
-        <service id="nelmio_api_doc.controller_name_parser" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
+        <service id="nelmio_api_doc.controller_name_parser" class="Nelmio\ApiDocBundle\Extractor\ControllerNameParser" public="false">
             <argument type="service" id="kernel" />
         </service>
 
