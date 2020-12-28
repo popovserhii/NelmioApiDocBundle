@@ -67,6 +67,7 @@ class DescriptionFormTypeExtension extends AbstractTypeExtension
 
     public static function getExtendedTypes(): iterable
     {
-        return [FormType::class];
+        //return [FormType::class];
+        return [\Symfony\Component\Form\Extension\Core\Type\FormType::class];
     }
 }
