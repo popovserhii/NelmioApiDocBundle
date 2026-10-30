@@ -3,35 +3,26 @@
 namespace Nelmio\ApiDocBundle\Twig\Extension;
 
 use Michelf\MarkdownExtra;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
 
-class MarkdownExtension extends \Twig_Extension
+class MarkdownExtension extends AbstractExtension
 {
-    protected $markdownParser;
+    private MarkdownExtra $markdownParser;
 
     public function __construct()
     {
         $this->markdownParser = new MarkdownExtra();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getFilters()
+    public function getFilters(): array
     {
-        return array(
-            new \Twig_SimpleFilter('extra_markdown', array($this, 'markdown'), array('is_safe' => array('html'))),
-        );
+        return [
+            new TwigFilter('extra_markdown', [$this, 'markdown'], ['is_safe' => ['html']]),
+        ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return 'nelmio_api_doc';
-    }
-
-    public function markdown($text)
+    public function markdown($text): string
     {
         return $this->markdownParser->transform($text);
     }
