@@ -20,6 +20,13 @@
     </parameters>
 
     <services>
+        <service id="Nelmio\ApiDocBundle\Controller\ApiDocController" class="Nelmio\ApiDocBundle\Controller\ApiDocController" public="true">
+            <argument type="service" id="nelmio_api_doc.extractor.api_doc_extractor" />
+            <argument type="service" id="nelmio_api_doc.formatter.html_formatter" />
+            <argument type="service" id="nelmio_api_doc.formatter.swagger_formatter" />
+            <tag name="controller.service_arguments" />
+        </service>
+
         <service id="nelmio_api_doc.doc_comment_extractor" class="%nelmio_api_doc.doc_comment_extractor.class%" />
 
         <service id="nelmio_api_doc.controller_name_parser" class="Nelmio\ApiDocBundle\Extractor\ControllerNameParser" public="false">
